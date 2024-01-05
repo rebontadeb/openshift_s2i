@@ -5,13 +5,13 @@ FROM nginx:latest
 USER nginx
 
 # Copy the custom Nginx configuration file
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+RUN cp nginx.conf /etc/nginx/conf.d/default.conf
 
 # Create a directory for our custom HTML file
 WORKDIR /usr/share/nginx/html
 
 # Copy the custom HTML file into the container
-COPY index.html .
+RUN cp index.html .
 
 # Expose port 8080 for OpenShift compatibility
 EXPOSE 8080
