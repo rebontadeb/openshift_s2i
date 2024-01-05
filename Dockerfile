@@ -1,7 +1,7 @@
 # Use the official Nginx base image
-FROM nginx:latest
+FROM nginxinc/nginx-unprivileged  
 
-RUN chmod 777 -R /var/cache/nginx/client_temp
+#RUN chmod 777 -R /var/cache/nginx/client_temp
 
 # Change the user to a non-root user
 USER nginx
