@@ -1,17 +1,19 @@
 # Use the official Nginx base image
 FROM nginx:latest
 
+RUN chmod 777 -R /var/cache/nginx/client_temp
+
 # Change the user to a non-root user
 USER nginx
 
 # Copy the custom Nginx configuration file
-RUN cp nginx.conf /etc/nginx/conf.d/default.conf
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Create a directory for our custom HTML file
 WORKDIR /usr/share/nginx/html
 
 # Copy the custom HTML file into the container
-RUN cp index.html .
+COPY index.html .
 
 # Expose port 8080 for OpenShift compatibility
 EXPOSE 8080
